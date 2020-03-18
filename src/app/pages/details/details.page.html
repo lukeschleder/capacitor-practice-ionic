@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ionTitle">Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- using grid to control location of card on smaller and larger screens -->
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-card>
+          <ion-img alt="picture of differing coniferous species from MN"src={{tree.imageUrl}}></ion-img>
+          <ion-card-header>
+            <ion-card-title color="primary">
+            {{tree.name}}({{tree.scientificName}})
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-card-subtitle size="lrg"color="secondary"><b>Form</b></ion-card-subtitle>
+            <p>{{tree.form}}</p>
+          </ion-card-content>
+          <ion-card-content>
+            <ion-card-subtitle size="lrg"color="tertiary"><b>Bark</b></ion-card-subtitle>
+            <p>{{tree.bark}}</p>
+          </ion-card-content>
+          <ion-card-content>
+            <ion-card-subtitle size="lrg"color="success"><b>Leaf</b></ion-card-subtitle>
+            <p>{{tree.leaf}}</p>
+          </ion-card-content>
+          <ion-card-content>
+            <ion-card-subtitle size="lrg"color="warning"><b>Seeds</b></ion-card-subtitle>
+            <p>{{tree.seeds}}</p>
+          </ion-card-content>
+          <ion-card-content>
+            <ion-card-subtitle size="lrg"color="danger"><b>Range</b></ion-card-subtitle>
+            <p>{{tree.range}}</p>
+          </ion-card-content>
+          <ion-card-content>
+            <ion-card-subtitle size="lrg"color="primary"><b>Field Observations</b></ion-card-subtitle>
+            <p>{{tree.fieldObservations}}</p>
+          </ion-card-content>
+          <ion-card-content>
+            <ion-card-subtitle size="lrg"color="secondary"><b>Field Photos</b></ion-card-subtitle>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+ 
+  
+  <!-- button that routes user to edit-details/treeId to edit tree information -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button button [routerLink]="['/edit-details', treeId]" color="danger" routerLink="/edit-details" routerDirection="forward">
+      Edit
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

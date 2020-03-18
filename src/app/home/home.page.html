@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title size="lrg"class="ionTitle">
+      <b>Conifer Cache MN</b>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-list>
+
+          <ng-container *ngIf="!trees || trees.length ==0">
+            <div *ngFor="let n of [0,1,2]" padding>
+              <ion-skeleton-text></ion-skeleton-text>
+              <p>
+                <ion-skeleton-text class="fake-skeleton"></ion-skeleton-text>
+              </p>
+            </div>
+          </ng-container>
+          <!-- looping through tree collection and displaying on home page as list -->
+          <ion-item-sliding *ngFor="let tree of trees">
+            <ion-item lines="inset" button [routerLink]="['/details', tree.id]">
+              <ion-label padding color="primary">
+                <b>{{ tree.name }}</b>
+                <p id="scienceStyle">{{tree.scientificName}}</p>
+                <ion-img alt="picture list of conifer trees from MN"src="{{tree.imageUrl}}"></ion-img>
+              </ion-label>
+            </ion-item>
+      
+            <ion-item-options side="end">
+              <ion-item-option (click)="remove(tree)" color="danger">
+                Delete Tree
+                <ion-icon name="checkmark" slot="end"></ion-icon>
+              </ion-item-option>
+      
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button (click)="logout()" color="danger" routerDirection="forward">
+      Logout
+    </ion-fab-button>
+  </ion-fab>
+
+
+  <!-- floating button that allows user to add new coniferous tree to list -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="success" routerLink="/edit-details" routerDirection="forward">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
