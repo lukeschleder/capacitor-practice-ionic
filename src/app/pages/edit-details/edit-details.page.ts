@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Tree, ConiferousService } from 'src/app/services/coniferous.service';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingController, NavController } from '@ionic/angular';
+import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-edit-details',
@@ -24,9 +26,14 @@ export class EditDetailsPage implements OnInit {
   // empty value to hold the params/ treeId of tree clicked
   treeId = null;
 
+  photo: SafeResourceUrl;
 
-  constructor(private coniferousService: ConiferousService, private route: ActivatedRoute,
-     private loadingController: LoadingController, private nav: NavController) { }
+
+  constructor(private coniferousService: ConiferousService, 
+              private route: ActivatedRoute,
+              private loadingController: LoadingController, 
+              private nav: NavController,
+              private sanitizer: DomSanitizer) { }
   // grabs params and sets to treeId and then calls loadTree function
   ngOnInit() {
     this.treeId = this.route.snapshot.params['id'];
@@ -65,6 +72,19 @@ export class EditDetailsPage implements OnInit {
       });
     }
 
+  }
+
+  async takePicture() {
+    const image = await Plugins.Camera.getPhoto({
+      quality: 100,
+      allowEditing: false,
+      resultType: CameraResultType.DataUrl,
+      source: CameraSource.Camera
+    });
+
+    this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
+    console.log(image, image.dataUrl);
+    
   }
 
 }

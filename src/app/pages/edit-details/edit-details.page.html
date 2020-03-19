@@ -51,7 +51,10 @@
           </ion-item>
           <ion-item>
             <ion-label color="secondary">Field Photos:</ion-label>
-            <ion-button color="secondary"expand="full">Add Picture</ion-button>
+
+              <img [src]="photo" alt="image of tree">
+          
+            <ion-button (click)="takePicture()" color="secondary"expand="full"><ion-icon name="camera">     </ion-icon></ion-button>
           </ion-item>
         </ion-list>
         <ion-button expand="full" (click)="saveTree()">Save</ion-button>
@@ -59,5 +62,15 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  
+  <!-- <img [src]="photo" > -->
+  <!-- <ion-fab vertical="bottom" color="secondary" horizontal="start" slot="fixed">
+    <ion-fab-button (click)="takePicture()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="saveTree()">
+      <ion-icon name="save"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
 </ion-content>
