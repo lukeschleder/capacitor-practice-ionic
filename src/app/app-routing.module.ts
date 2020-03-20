@@ -26,6 +26,22 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'home-deciduous',
+    loadChildren: () => import('./home-deciduous/home-deciduous.module').then( m => m.HomeDeciduousPageModule)
+  },
+  {
+    path: 'deciduous-details/:id',
+    loadChildren: () => import('./pages/deciduous-details/deciduous-details.module').then( m => m.DeciduousDetailsPageModule)
+  },
+  {
+    path: 'deciduous-edit-details',
+    loadChildren: () => import('./pages/deciduous-edit-details/deciduous-edit-details.module').then( m => m.DeciduousEditDetailsPageModule)
+  },
+  {
+    path: 'deciduous-edit-details/:id',
+    loadChildren: () => import('./pages/deciduous-edit-details/deciduous-edit-details.module').then( m => m.DeciduousEditDetailsPageModule)
   }
 ];
 
