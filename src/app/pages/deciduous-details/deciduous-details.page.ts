@@ -41,7 +41,7 @@ export class DeciduousDetailsPage implements OnInit {
   treeId = null;
 
 
-  constructor(private coniferousService: DeciduousService, private route: ActivatedRoute,
+  constructor(private deciduousService: DeciduousService, private route: ActivatedRoute,
      private loadingController: LoadingController, private nav: NavController) { }
   // grabs a snapshot of params which are the id of tree clicked on home page and creates treeId on details page
   ngOnInit() {
@@ -57,10 +57,10 @@ export class DeciduousDetailsPage implements OnInit {
     });
     await loading.present();
 
-    this.coniferousService.getTree(this.treeId).subscribe(res => {
+    this.deciduousService.getTree(this.treeId).subscribe(res => {
       loading.dismiss();
       this.tree = res;
-      console.log(this.tree);
+      console.log(res);
       
     });
   }

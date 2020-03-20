@@ -24,7 +24,7 @@
           </ng-container>
           <!-- looping through tree collection and displaying on home page as list -->
           <ion-item-sliding *ngFor="let tree of trees">
-            <ion-item lines="inset" button [routerLink]="['/details', tree.id]">
+            <ion-item lines="inset" button [routerLink]="['/deciduous-details', tree.id]">
               <ion-label padding color="primary">
                 <b>{{ tree.name }}</b>
                 <p id="scienceStyle">{{tree.scientificName}}</p>
